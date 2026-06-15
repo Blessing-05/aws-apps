@@ -1,0 +1,28 @@
+# 2. Paste this exact content inside the nano window
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.14
+    commands:
+      - echo "Installing dependencies..."
+      - pip install -r requirements.txt
+
+  pre_build:
+    commands:
+      - echo "Running unit tests..."
+      - pytest test_app.py
+
+  build:
+    commands:
+      - echo "Build phase reached on `date`"
+
+  post_build:
+    commands:
+      - echo "Build process complete!"
+
+artifacts:
+  files:
+    - app2.py
+    - requirements2.txt
